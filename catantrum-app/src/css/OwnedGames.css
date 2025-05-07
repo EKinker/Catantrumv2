@@ -1,0 +1,49 @@
+/* Container for the owned games component */
+.owned-games {
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Loading state style */
+.loading {
+    font-size: 1.5rem;
+    color: #777;
+    text-align: center;
+}
+
+/* Error message style */
+.error-message {
+    color: red;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Game list styles */
+.game-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.game-item {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.game-item strong {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.game-item p {
+    font-size: 1rem;
+    color: #555;
+}

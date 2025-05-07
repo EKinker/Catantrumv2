@@ -1,5 +1,5 @@
 import React from 'react';
-import OwnedGames from './OwnedGames';
+import OwnedGames from './js/OwnedGames';
 
 function App(){
     return (
