@@ -33,7 +33,7 @@ function App(){
         setError(null);
 
         try {
-            const response = await fetch(`/api/search?query=${encodeURIComponent(query)}&exact=${isExact}`);
+            const response = await fetch(`/api/search/games?query=${encodeURIComponent(query)}&exact=${isExact}`);
             if (!response.ok) throw new Error('Failed to fetch');
             const data = await response.json();
             setResults(data);

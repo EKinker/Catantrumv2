@@ -1,5 +1,6 @@
 package org.kinker.service;
 
+import org.kinker.api.GameDetail;
 import org.kinker.api.GameItem;
 import org.kinker.client.BGGClient;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,11 @@ public class GameSearchService {
         this.client = client;
     }
 
-    public Mono<List<GameItem>> searchGames(String query, Boolean exactMatch) {
+    public Mono<List<GameItem>> searchGames(String query, boolean exactMatch) {
         return client.searchGames(query, exactMatch);
+    }
+
+    public Mono<List<GameDetail>> searchGameDetail(List<Long> idList) {
+        return client.searchGameDetail(idList);
     }
 }
