@@ -2,15 +2,13 @@ package org.kinker.controller;
 
 import org.kinker.api.GameItem;
 import org.kinker.service.GameSearchService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/search")
 public class GameSearchController {
     private final GameSearchService service;
