@@ -39,6 +39,9 @@ public class GameDetail {
     @XmlElement(name = "link")
     private List<AdditionalDetail> additionalDetails;
 
+    @XmlElement(name = "statistics")
+    private Statistics statistics;
+
     public long getBggId() {
         return id;
     }
@@ -104,6 +107,11 @@ public class GameDetail {
                 .toList();
     }
 
+    public int getUsersRated() {
+        return statistics != null & statistics.ratings != null && statistics.ratings.usersRated != null
+                ? statistics.ratings.usersRated.value : 0;
+    }
+
     @XmlAccessorType(XmlAccessType.FIELD)
     public static class Name {
         @XmlAttribute
@@ -139,6 +147,24 @@ public class GameDetail {
         public String getDetailValue() {
             return value;
         }
+    }
+
+    @XmlAccessorType(XmlAccessType.FIELD)
+    public static class Statistics {
+        @XmlElement(name = "ratings")
+        private Ratings ratings;
+    }
+
+    @XmlAccessorType(XmlAccessType.FIELD)
+    public static class Ratings {
+        @XmlElement(name = "usersrated")
+        private UsersRated usersRated;
+    }
+
+    @XmlAccessorType(XmlAccessType.FIELD)
+    public static class UsersRated {
+        @XmlAttribute(name = "value")
+        private int value;
     }
 
 }

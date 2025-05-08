@@ -27,4 +27,9 @@ public class GameSearchController {
     public Mono<List<GameDetail>> searchGameDetail(@RequestParam(name = "id") List<Long> idList) {
         return service.searchGameDetail(idList);
     }
+
+    @GetMapping("/detailed-list")
+    public Mono<List<GameDetail>> searchGamesAndDetails(@RequestParam(name = "query") String query, @RequestParam(name = "exact", required = false, defaultValue = "false") boolean exactMatch) {
+        return service.searchGamesAndDetails(query, exactMatch);
+    }
 }

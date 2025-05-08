@@ -33,6 +33,7 @@ public class BGGClient {
                 .uri(uriBuilder -> uriBuilder
                         .path("/search")
                         .queryParam("query", query)
+                        .queryParam("type", "boardgame")
                         .queryParamIfPresent("exact", exactMatch ? Optional.of(1) : Optional.empty())
                         .build())
                 .retrieve()
@@ -49,6 +50,7 @@ public class BGGClient {
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/thing")
+                        .queryParam("stats", 1)
                         .queryParam("id", idString)
                         .build())
                 .retrieve()
