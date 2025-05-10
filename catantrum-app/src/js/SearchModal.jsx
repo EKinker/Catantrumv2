@@ -2,6 +2,7 @@ import React from 'react';
 import Loading from './LoadingMessage';
 import ErrorMessage from './ErrorMessage';
 import '../css/SearchModal.css';
+import { sortSearchResults } from './utils';
 
 function SearchModal({ input, setInput, results, loading, error, onClose, onSearch }) {
     return (
@@ -31,11 +32,11 @@ function SearchModal({ input, setInput, results, loading, error, onClose, onSear
                 {error && <ErrorMessage message={error} />}
 
                 <ul className="search-results">
-                    {results.map((game) => (
-                        <li key={game.id}>
+                    {sortSearchResults(results,input).map((game) => (
+                        <ul key={game.id}>
                             <strong>{game.nameValue || 'Unnamed Game'}</strong>
                             {game.yearPublished && ` (${game.yearPublished})`}
-                        </li>
+                        </ul>
                     ))}
                 </ul>
             </div>
