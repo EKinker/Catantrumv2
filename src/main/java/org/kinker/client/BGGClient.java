@@ -9,6 +9,7 @@ import org.kinker.api.GameItem;
 import org.kinker.api.GameItemList;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.io.StringReader;
@@ -43,7 +44,17 @@ public class BGGClient {
     }
 
     public Mono<List<GameDetail>> searchGameDetail(List<Long> idList) {
-        String idString = idList.stream()
+        return Flux.fromIterable(idList)
+                .buffer(20)
+                .flatMap(this::partialSearch)
+                .collectList()
+                .map(list -> list.stream()
+                        .flatMap(List::stream)
+                        .collect(Collectors.toList()));
+    }
+
+    private Mono<List<GameDetail>> partialSearch(List<Long> ids) {
+        String idString = ids.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(","));
 
