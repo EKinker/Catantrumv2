@@ -5,12 +5,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+@Deprecated  //remove this class
 @Entity
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private Long bggId;
     private String name;
 
     private Integer minPlayers;
@@ -22,6 +24,14 @@ public class Game {
 
     public Long getId() {
         return id;
+    }
+
+    public Long getBggId() {
+        return bggId;
+    }
+
+    public void setBggId(Long bggId) {
+        this.bggId = bggId;
     }
 
     public String getName() {

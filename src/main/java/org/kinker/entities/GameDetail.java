@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class BggItemDetail {
+public class GameDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -17,6 +17,7 @@ public class BggItemDetail {
     private Integer maxPlayers;
     private Integer minTime;
     private Integer maxTime;
+    private Integer minAge;
     @ManyToMany
     @JoinTable(name="game_category_assoc",
     joinColumns = @JoinColumn(name = "game_id"),
@@ -28,6 +29,7 @@ public class BggItemDetail {
             inverseJoinColumns = @JoinColumn(name = "mechanic_id"))
     private List<GameMechanic> mechanics;
     private int usersRated;
+    private boolean owned;
 
     public long getId() {
         return id;
@@ -101,6 +103,7 @@ public class BggItemDetail {
         this.maxTime = maxTime;
     }
 
+
     public List<GameCategory> getCategories() {
         return categories;
     }
@@ -123,5 +126,21 @@ public class BggItemDetail {
 
     public void setUsersRated(int usersRated) {
         this.usersRated = usersRated;
+    }
+
+    public Integer getMinAge() {
+        return minAge;
+    }
+
+    public void setMinAge(Integer minAge) {
+        this.minAge = minAge;
+    }
+
+    public boolean isOwned() {
+        return owned;
+    }
+
+    public void setOwned(boolean owned) {
+        this.owned = owned;
     }
 }
